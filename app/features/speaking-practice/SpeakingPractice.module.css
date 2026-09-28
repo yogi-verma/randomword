@@ -2266,3 +2266,16 @@
   :global(.brand){flex-shrink:0;white-space:nowrap}
   :global(.brand>span:last-child){white-space:nowrap}
 }
+
+:global(.practice-guide-link){color:#9cb4d8;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;transition:color .18s ease}
+:global(.practice-guide-link:hover){color:#e7f0ff}
+:global(.guide-link-compact){display:none}
+:global(.theme-light .practice-guide-link){color:#56769f}
+:global(.theme-light .practice-guide-link:hover){color:#245fae}
+
+@media(max-width:600px){
+  :global(.header-actions){gap:8px}
+  :global(.practice-guide-link){font-size:11px}
+  :global(.guide-link-wide){display:none}
+  :global(.guide-link-compact){display:inline}
+}

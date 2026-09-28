@@ -70,12 +70,21 @@ app/
 │   ├── speaking-practice/     # Main modes, prompt bank, and spin flow
 │   ├── theme-toggle/          # Dark/light theme control
 │   └── timer/                 # Speaking timer experience
+├── guide/                     # Search-friendly speaking-practice guide
 ├── globals.css                # Global styles and design tokens
 ├── layout.tsx                 # App metadata and root layout
 └── page.tsx                   # Home page
 ```
 
 The app is built with [Next.js](https://nextjs.org/), React, TypeScript, CSS Modules, and Tailwind CSS. Browser Web Audio APIs generate the optional spin and timer sounds; the app does not need audio files or a server-side audio service.
+
+## Search visibility
+
+The app includes descriptive page metadata, canonical URLs, website/application structured data, a guide page, and generated `robots.txt` and `sitemap.xml` routes. The production site URL defaults to the Vercel deployment and can be changed with `NEXT_PUBLIC_SITE_URL` when a custom domain is connected.
+
+To add Google Search Console ownership verification, set `GOOGLE_SITE_VERIFICATION` to the token supplied by Search Console, then redeploy. Submit `/sitemap.xml` in Search Console after the site is live. Search Console verification and indexing requests require access to the Google account that owns the property; adding a sitemap does not guarantee indexing or rankings.
+
+Copy `.env.example` to `.env.local` for local overrides.
 
 ## Privacy
 

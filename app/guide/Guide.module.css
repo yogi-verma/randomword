@@ -1,0 +1,61 @@
+.page {
+  --guide-ink: #edf3ff;
+  --guide-muted: #a5b4ca;
+  --guide-blue: #85adf2;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: var(--guide-ink);
+  background: radial-gradient(ellipse at 14% 2%, rgba(61, 108, 184, .2), transparent 34%), linear-gradient(180deg, #101a2b 0%, #0a1220 100%);
+}
+
+.header {
+  width: min(100% - 40px, 1000px);
+  min-height: 78px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border-bottom: 1px solid rgba(176, 197, 231, .12);
+}
+
+.brand { color: var(--guide-ink); text-decoration: none; font-weight: 750; letter-spacing: -.04em; }
+.brand span { color: var(--guide-blue); font-weight: 550; }
+.backLink { color: var(--guide-muted); font-size: 14px; text-decoration: none; transition: color .18s ease; }
+.backLink:hover { color: var(--guide-ink); }
+
+.article { width: min(100% - 40px, 860px); margin: 0 auto; padding: clamp(45px, 9vw, 94px) 0 80px; }
+.kicker { margin: 0 0 17px; color: #8db3f2; font-size: 11px; font-weight: 750; letter-spacing: .16em; }
+.article h1 { max-width: 800px; margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(42px, 7vw, 72px); font-weight: 550; line-height: 1.08; letter-spacing: -.045em; }
+.lede { max-width: 700px; margin: 25px 0 28px; color: #b6c3d7; font-size: clamp(17px, 2.2vw, 20px); line-height: 1.75; }
+.primaryLink { min-height: 48px; display: inline-flex; align-items: center; gap: 14px; padding: 0 19px; border: 1px solid rgba(143, 181, 248, .28); border-radius: 999px; background: linear-gradient(135deg, #548be9, #2868c6); box-shadow: 0 8px 22px rgba(25, 83, 171, .22); color: #fff; font-size: 14px; font-weight: 700; text-decoration: none; transition: transform .18s ease, box-shadow .18s ease; }
+.primaryLink:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(25, 83, 171, .34); }
+.section { margin-top: clamp(47px, 8vw, 76px); }
+.section h2 { margin: 0 0 16px; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(27px, 4vw, 38px); font-weight: 550; letter-spacing: -.025em; line-height: 1.2; }
+.section > p { max-width: 760px; margin: 0 0 15px; color: var(--guide-muted); font-size: 16px; line-height: 1.8; }
+.steps { display: grid; gap: 13px; margin: 25px 0 0; padding: 0; list-style: none; counter-reset: guide-step; }
+.steps li { position: relative; padding: 16px 18px 16px 52px; border: 1px solid rgba(155, 181, 222, .13); border-radius: 16px; background: rgba(255, 255, 255, .035); color: var(--guide-muted); line-height: 1.65; counter-increment: guide-step; }
+.steps li::before { position: absolute; left: 17px; top: 15px; color: var(--guide-blue); font-size: 13px; font-weight: 750; content: "0" counter(guide-step); }
+.steps strong { color: var(--guide-ink); }
+.modeGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; margin-top: 24px; }
+.modeCard { min-width: 0; padding: 19px 18px 21px; border: 1px solid rgba(155, 181, 222, .14); border-radius: 18px; background: linear-gradient(145deg, rgba(40, 60, 91, .56), rgba(19, 31, 50, .52)); }
+.modeNumber { color: #88aff3; font-size: 11px; font-weight: 750; letter-spacing: .12em; }
+.modeCard h3 { margin: 14px 0 9px; color: var(--guide-ink); font-size: 17px; }
+.modeCard p { margin: 0; color: var(--guide-muted); font-size: 14px; line-height: 1.7; }
+.faq { padding: 17px 0; border-bottom: 1px solid rgba(176, 197, 231, .14); }
+.faq summary { color: var(--guide-ink); font-size: 16px; font-weight: 650; cursor: pointer; }
+.faq p { max-width: 760px; margin: 12px 0 0; color: var(--guide-muted); font-size: 15px; line-height: 1.75; }
+.bottomCta { margin-top: 52px; padding: 25px; border: 1px solid rgba(143, 181, 248, .2); border-radius: 22px; background: rgba(56, 89, 139, .16); }
+.bottomCta p { margin: 0 0 17px; color: var(--guide-ink); font-family: 'Playfair Display', Georgia, serif; font-size: 25px; }
+
+@media(max-width:700px) {
+  .modeGrid { grid-template-columns: 1fr; }
+  .header { width: calc(100% - 32px); min-height: 66px; }
+  .article { width: calc(100% - 36px); padding-top: 50px; }
+  .section { margin-top: 48px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .backLink,.primaryLink { transition: none; }
+}

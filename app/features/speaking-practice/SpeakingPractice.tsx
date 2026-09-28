@@ -329,6 +329,7 @@ export default function SpeakingPractice() {
           <div className="creator-credit"><a className="creator-instagram" href="https://www.instagram.com/its_yogiii_22/" target="_blank" rel="noreferrer" aria-label="Open Instagram profile: its_yogiii_22" title="Instagram"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="15" height="15" rx="4.5" stroke="currentColor" strokeWidth="1.6"/><circle cx="10" cy="10" r="3.4" stroke="currentColor" strokeWidth="1.6"/><circle cx="14.8" cy="5.5" r=".9" fill="currentColor"/></svg></a></div>
         </div>
         <div className="header-actions">
+          <a className="practice-guide-link" href="/guide"><span className="guide-link-wide">Practice guide</span><span className="guide-link-compact">Guide</span></a>
           <ThemeToggle theme={theme} onToggle={() => setTheme(theme === "dark" ? "light" : "dark")} />
         </div>
       </header>
