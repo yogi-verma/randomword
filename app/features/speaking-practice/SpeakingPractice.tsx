@@ -325,7 +325,7 @@ export default function SpeakingPractice() {
       <div className="ambient ambient-right" aria-hidden="true" />
       <header className="topbar">
         <div className="brand-stack">
-          <a className="brand" href="#home" aria-label="Randomword home"><span className="brand-mark" aria-hidden="true"><span className="brand-orbit"><span className="brand-orbit-r">r</span><span className="brand-orbit-w">w</span></span></span><span>randomword<span className="brand-cool">.cool</span></span></a>
+          <a className="brand" href="/" aria-label="Randomword home"><span className="brand-mark" aria-hidden="true"><span className="brand-orbit"><span className="brand-orbit-r">r</span><span className="brand-orbit-w">w</span></span></span><span>randomword<span className="brand-cool">.cool</span></span></a>
           <div className="creator-credit"><a className="creator-instagram" href="https://www.instagram.com/its_yogiii_22/" target="_blank" rel="noreferrer" aria-label="Open Instagram profile: its_yogiii_22" title="Instagram"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="15" height="15" rx="4.5" stroke="currentColor" strokeWidth="1.6"/><circle cx="10" cy="10" r="3.4" stroke="currentColor" strokeWidth="1.6"/><circle cx="14.8" cy="5.5" r=".9" fill="currentColor"/></svg></a></div>
         </div>
         <div className="header-actions">

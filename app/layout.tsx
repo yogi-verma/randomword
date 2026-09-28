@@ -5,7 +5,7 @@ import { siteUrl } from "./site";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Free English Speaking & Communication Practice | randomword.cool",
+    default: " RandomWord - Free English Speaking & Communication Practice",
     template: "%s | randomword.cool",
   },
   applicationName: "randomword.cool",

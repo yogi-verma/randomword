@@ -28,7 +28,7 @@ export default function PracticeGuidePage() {
         <p className={styles.lede}>
           Speaking clearly is a skill you build by using it. randomword.cool gives you a simple way to practise English speaking, organize your thoughts, and get comfortable talking without a script—one prompt at a time.
         </p>
-        <a className={styles.primaryLink} href="/#home">Start a one-minute practice <span aria-hidden="true">→</span></a>
+        <a className={styles.primaryLink} href="/">Start a one-minute practice <span aria-hidden="true">→</span></a>
 
         <section className={styles.section}>
           <h2>How to practise speaking in one minute</h2>
@@ -89,7 +89,7 @@ export default function PracticeGuidePage() {
 
         <div className={styles.bottomCta}>
           <p>Ready to get a thought moving?</p>
-          <a className={styles.primaryLink} href="/#home">Try randomword.cool <span aria-hidden="true">→</span></a>
+          <a className={styles.primaryLink} href="/">Try randomword.cool <span aria-hidden="true">→</span></a>
         </div>
       </article>
     </main>
