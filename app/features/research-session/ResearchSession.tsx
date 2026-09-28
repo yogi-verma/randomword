@@ -52,10 +52,6 @@ export default function ResearchSession({ open, minutes, word, theme, onDone, on
   return (
     <div className={`${styles.overlay} ${styles[theme]}`} role="presentation">
       <section className={styles.card} role="dialog" aria-modal="true" aria-label="Research session">
-        <header className={styles.header}>
-          <div className={styles.sessionLabel}><span className={styles.liveDot} /> RESEARCH SESSION</div>
-          <button className={styles.iconButton} onClick={onClose} aria-label="Close research session"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/></svg></button>
-        </header>
         <div className={styles.content}>
           <span className={styles.eyebrow}>YOUR WORD</span>
           <h1 className={styles.prompt}>{word}</h1>

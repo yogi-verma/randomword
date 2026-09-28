@@ -2115,3 +2115,154 @@
   :global(.spin-button){height:46px}
   :global(.timer-button),:global(.settings-button){height:44px}
 }
+
+/* Match the action buttons to the rounded mode switch and simplify their labels. */
+:global(.spin-button),
+:global(.timer-button),
+:global(.settings-button){border-radius:999px}
+
+:global(.spin-button),
+:global(.timer-button){font-size:16px;font-weight:700;letter-spacing:0}
+
+:global(.spin-button .spin-icon),
+:global(.timer-button .timer-symbol){display:none}
+
+:global(.settings-button){width:54px;height:54px}
+
+@media(max-width:600px){
+  :global(.spin-button){height:52px;font-size:15px}
+  :global(.timer-button){height:48px;font-size:14px;padding:0 12px}
+  :global(.settings-button){width:48px;height:48px}
+}
+
+@media(max-width:600px) and (max-height:560px){
+  :global(.spin-button){height:46px}
+  :global(.timer-button),:global(.settings-button){height:44px}
+}
+
+/* Keep the complete action group the same width as the mode selector. */
+:global(.practice>.actions){
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 54px;
+  grid-template-rows:auto auto;
+  width:min(100%,380px);
+  max-width:380px;
+  gap:10px;
+}
+:global(.practice>.actions .spin-button){grid-column:1/-1;width:100%;min-width:0}
+:global(.practice>.actions .timer-button){grid-column:1;grid-row:2;width:100%;min-width:0}
+:global(.practice>.actions .settings-button){grid-column:2;grid-row:2}
+
+@media(max-width:600px){
+  :global(.practice>.actions){width:min(100%,330px);max-width:330px;grid-template-columns:minmax(0,1fr) 48px;gap:9px}
+}
+
+/* Interview mode shares the familiar layout while letting full questions breathe. */
+:global(.controls .mode-switch){width:min(100%,444px)}
+:global(.controls .mode-switch .mode){font-size:12px;padding-left:6px;padding-right:6px;white-space:nowrap}
+:global(.controls .mode-switch .mode-icon){width:22px;height:22px;margin-right:4px}
+:global(.controls .mode-switch .mode-icon svg){width:16px;height:16px}
+:global(.controls .mode-switch::before){width:calc((100% - 8px)/3)}
+:global(.controls .mode-switch.mode-research::before){transform:translateX(100%)}
+:global(.controls .mode-switch.mode-interview::before){transform:translateX(200%)}
+:global(.practice.mode-interview .word-display.interview-question){
+  width:min(100%,880px);
+  max-width:880px;
+  margin:14px auto;
+  font-family:'DM Sans',Arial,sans-serif;
+  font-size:clamp(25px,4vw,48px);
+  font-weight:600;
+  line-height:1.22;
+  letter-spacing:-.035em;
+  text-wrap:balance;
+  overflow-wrap:anywhere;
+}
+:global(.practice.mode-interview .word-area){width:100%}
+:global(.practice.mode-interview .word-label){color:#83aaf1}
+:global(.theme-light .practice.mode-interview .word-label){color:#3479dc}
+:global(.practice.mode-interview .mode-hint){max-width:420px}
+
+@media(max-width:600px){
+  :global(.controls .mode-switch){width:min(100%,380px)}
+  :global(.controls .mode-switch .mode){padding:8px 2px;font-size:10px}
+  :global(.controls .mode-switch .mode-icon){width:18px;height:18px;margin-right:2px}
+  :global(.controls .mode-switch .mode-icon svg){width:14px;height:14px}
+  :global(.practice.mode-interview .word-display.interview-question){font-size:clamp(23px,6.6vw,36px);line-height:1.25;margin:10px auto}
+}
+
+@media(max-width:600px){
+  :global(.controls .mode-switch){min-height:68px;padding:4px;align-items:stretch}
+  :global(.controls .mode-switch .mode){
+    display:flex;
+    min-height:58px;
+    align-items:center;
+    justify-content:center;
+    gap:3px;
+    padding:5px 2px;
+    font-size:12px;
+    line-height:1.08;
+    white-space:normal;
+    text-align:center;
+  }
+  :global(.controls .mode-switch .mode-icon){width:18px;height:18px;margin:0;flex:none}
+  :global(.controls .mode-switch .mode-icon svg){width:14px;height:14px}
+  :global(.controls .mode-switch .mode-label){
+    min-width:0;
+    margin:0;
+    color:inherit;
+    font-family:inherit;
+    font-size:12px;
+    font-weight:700;
+    line-height:1.08;
+    text-wrap:balance;
+  }
+  :global(.controls .category-trigger){height:52px}
+}
+
+@media(max-width:600px) and (max-height:560px){
+  :global(.controls .mode-switch){min-height:58px}
+  :global(.controls .mode-switch .mode){min-height:48px;font-size:11px}
+  :global(.controls .mode-switch .mode-label){font-size:11px}
+  :global(.controls .category-trigger){height:48px}
+}
+
+/* Mode tabs stay visually steady on hover; retain the pointer affordance. */
+:global(.controls .mode-switch .mode){cursor:pointer}
+:global(.theme-dark .controls .mode-switch .mode:hover:not(.active)){color:#a6b4c9}
+:global(.theme-light .controls .mode-switch .mode:hover:not(.active)){color:#65768c}
+
+/* Creator credit sits beside the brand on desktop and below it on phones. */
+:global(.brand-stack){display:flex;align-items:center;gap:20px;min-width:0}
+:global(.creator-credit){display:flex;align-items:center;gap:7px;white-space:nowrap;font-size:12px;font-weight:600}
+:global(.creator-byline){color:#91a0b4}
+:global(.creator-instagram){display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border:1px solid rgba(151,178,220,.23);border-radius:999px;background:rgba(35,49,72,.38);color:#d9e5f6;text-decoration:none;transition:border-color .18s ease,background .18s ease,color .18s ease}
+:global(.creator-instagram svg){width:16px;height:16px;flex:none}
+:global(.creator-instagram:hover){border-color:rgba(126,164,229,.52);background:rgba(51,75,111,.48);color:#fff}
+:global(.theme-light .creator-byline){color:#71839a}
+:global(.theme-light .creator-instagram){border-color:rgba(63,112,179,.22);background:rgba(255,255,255,.68);color:#385777}
+:global(.theme-light .creator-instagram:hover){border-color:rgba(52,121,220,.48);background:#edf4ff;color:#235fae}
+
+@media(max-width:600px){
+  :global(.brand-stack){flex-direction:row;align-items:center;gap:8px}
+  :global(.creator-credit){gap:6px;font-size:11px}
+  :global(.creator-instagram){gap:6px;padding:5px 9px}
+  :global(.creator-instagram svg){width:14px;height:14px}
+}
+
+:global(.creator-instagram){width:34px;height:34px;flex:none;justify-content:center;padding:0;border-radius:50%}
+:global(.creator-instagram svg){width:17px;height:17px}
+
+@media(max-width:380px){
+  :global(.creator-credit){font-size:10px}
+  :global(.creator-instagram){gap:5px;padding:4px 8px}
+}
+
+@media(max-width:600px){
+  :global(.creator-instagram){width:30px;height:30px;padding:0}
+  :global(.creator-instagram svg){width:15px;height:15px}
+}
+
+@media(max-width:600px){
+  :global(.brand){flex-shrink:0;white-space:nowrap}
+  :global(.brand>span:last-child){white-space:nowrap}
+}

@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# randomword.cool
 
-## Getting Started
+**A prompt. A minute. No preparation.**
 
-First, run the development server:
+randomword.cool is a lightweight speaking-practice app for building confidence, clarity, and quick thinking. Choose a practice mode, spin for a prompt, and start speaking—no account or setup required.
+
+## Practice modes
+
+### Off the Cuff
+
+Pick a topic category and spin for a single-word prompt. Speak from your first thought, with an optional timer to keep each round focused.
+
+Categories include General, Personal Finance, Entrepreneurship, Startups, Tech / AI, Fitness, Nutrition, Productivity, History, Literature, Creativity, Everyday Life, Big Questions, Creator Economy, Climate & Energy, Gaming, Wellness, Pop Culture, Internet Culture, Science & Space, and Fashion & Design.
+
+### Deep Research
+
+Spin for a word drawn from all categories, then take a focused research session before speaking. Choose a research duration from 10 to 30 minutes. When you finish, the app opens a one-minute speaking round for your word.
+
+### Interview
+
+Practice with 50 curated behavioral interview questions. Spin to choose a question, then answer it in a fixed one-minute round. The timer offers a simple **STAR** structure: Situation, Task, and Action + Result.
+
+## Features
+
+- Responsive interface for desktop, tablet, and mobile screens
+- Dark and light themes
+- Animated prompt spin with synchronized sound effects
+- Five selectable spin sounds, plus controls to mute sound effects
+- Speaking timer settings from 1 to 10 minutes
+- Research timer settings from 10 to 30 minutes
+- Optional word definitions in speaking sessions
+- Accessible controls and reduced-motion support
+- No sign-up, account, or backend required
+
+## Run locally
+
+### Requirements
+
+- Node.js and npm
+
+### Setup
 
 ```bash
+git clone https://github.com/yogi-verma/randomword.git
+cd randomword
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the local development server |
+| `npm run build` | Create an optimized production build |
+| `npm run start` | Serve the production build locally |
+| `npm run lint` | Run ESLint |
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```text
+app/
+├── features/
+│   ├── category-picker/       # Topic category selector
+│   ├── interview-mode/        # Behavioral interview question bank
+│   ├── research-session/      # Timed research experience
+│   ├── settings/              # Timer, sound, and ringtone preferences
+│   ├── speaking-practice/     # Main modes, prompt bank, and spin flow
+│   ├── theme-toggle/          # Dark/light theme control
+│   └── timer/                 # Speaking timer experience
+├── globals.css                # Global styles and design tokens
+├── layout.tsx                 # App metadata and root layout
+└── page.tsx                   # Home page
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The app is built with [Next.js](https://nextjs.org/), React, TypeScript, CSS Modules, and Tailwind CSS. Browser Web Audio APIs generate the optional spin and timer sounds; the app does not need audio files or a server-side audio service.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Privacy
 
-## Deploy on Vercel
+Practice works without creating an account. Theme preference is saved in the browser; prompts and timer sessions are handled in the page and are not sent to an application backend.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Production
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Build the app with `npm run build` and serve it with `npm run start`, or deploy the repository to a Next.js-compatible host such as [Vercel](https://vercel.com/).
