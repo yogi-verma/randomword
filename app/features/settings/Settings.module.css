@@ -1,0 +1,876 @@
+.settingsFeature { display: grid; }
+
+:global(.sound-toggle) {
+    width: 35px;
+    height: 20px;
+    padding: 2px;
+    border: 0;
+    border-radius: 20px;
+    background: #4c514c;
+    cursor: pointer;
+    transition: background .2s
+}
+
+:global(.sound-toggle span) {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #e9e1d2;
+    transition: transform .2s
+}
+
+:global(.sound-toggle.sound-on) {
+    background: var(--orange)
+}
+
+:global(.sound-toggle.sound-on span) {
+    transform: translateX(15px)
+}
+
+:global(.theme-light .sound-toggle) {
+    background: #b9b9ad
+}
+
+:global(.theme-light .sound-toggle span) {
+    background: #fffaf0
+}
+
+:global(.theme-light .sound-toggle.sound-on) {
+    background: var(--orange)
+}
+
+:global(.modal-backdrop) {
+    position: fixed;
+    z-index: 20;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgba(4, 10, 8, .67);
+    backdrop-filter: blur(7px);
+    animation: fade-in .18s ease-out
+}
+
+:global(.settings-modal) {
+    width: min(100%, 430px);
+    padding: 27px;
+    border: 1px solid rgba(231, 218, 192, .16);
+    border-radius: 22px;
+    background: linear-gradient(150deg, #202925, #171e1c 75%);
+    box-shadow: 0 28px 90px rgba(0, 0, 0, .42);
+    text-align: left;
+    animation: modal-in .22s cubic-bezier(.2, .8, .2, 1)
+}
+
+:global(.modal-heading) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 25px
+}
+
+:global(.modal-heading h2) {
+    margin: 7px 0 0;
+    color: #f0e5d4;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -.035em
+}
+
+:global(.modal-close) {
+    width: 33px;
+    height: 33px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(231, 218, 192, .13);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .03);
+    color: #a7aaa0;
+    cursor: pointer;
+    transition: color .18s, border-color .18s
+}
+
+:global(.modal-close:hover) {
+    color: #f0e5d4;
+    border-color: rgba(231, 218, 192, .35)
+}
+
+:global(.modal-close svg) {
+    width: 15px;
+    height: 15px
+}
+
+:global(.setting-row) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px
+}
+
+:global(.setting-copy) {
+    display: flex;
+    align-items: center;
+    gap: 12px
+}
+
+:global(.setting-copy>span:last-child) {
+    display: flex;
+    flex-direction: column;
+    gap: 4px
+}
+
+:global(.setting-copy strong) {
+    color: #ece5d7;
+    font-size: 13px;
+    font-weight: 600
+}
+
+:global(.setting-copy small) {
+    color: #999e94;
+    font-size: 10px
+}
+
+:global(.setting-icon) {
+    width: 35px;
+    height: 35px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(213, 137, 88, .22);
+    border-radius: 11px;
+    background: rgba(201, 120, 71, .08);
+    color: #d79266
+}
+
+:global(.setting-icon svg) {
+    width: 18px;
+    height: 18px
+}
+
+:global(.minute-stepper) {
+    height: 39px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 3px;
+    border: 1px solid rgba(231, 218, 192, .16);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, .035)
+}
+
+:global(.minute-stepper button) {
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #e6d8c5;
+    font-size: 19px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .15s, color .15s
+}
+
+:global(.minute-stepper button:hover:not(:disabled)) {
+    background: rgba(201, 120, 71, .19);
+    color: #edaa7e
+}
+
+:global(.minute-stepper button:disabled) {
+    color: #5e665f;
+    cursor: not-allowed
+}
+
+:global(.minute-stepper>span) {
+    min-width: 43px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 3px;
+    color: #f0e5d4;
+    font-variant-numeric: tabular-nums
+}
+
+:global(.minute-stepper>span strong) {
+    font-size: 14px
+}
+
+:global(.minute-stepper>span small) {
+    color: #a3a69c;
+    font-size: 9px
+}
+
+:global(.setting-divider) {
+    height: 1px;
+    margin: 20px 0;
+    border: 0;
+    background: rgba(231, 218, 192, .11)
+}
+
+:global(.sound-toggle) {
+    flex: none
+}
+
+:global(.done-button) {
+    width: 100%;
+    height: 45px;
+    margin-top: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 0;
+    border-radius: 12px;
+    background: #c97847;
+    color: #1c1712;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 7px 20px rgba(188, 103, 58, .14);
+    transition: transform .18s, background .18s
+}
+
+:global(.done-button:hover) {
+    transform: translateY(-1px);
+    background: #d58958
+}
+
+:global(.done-button span) {
+    font-size: 15px
+}
+
+:global(.theme-light .modal-backdrop) {
+    background: rgba(30, 42, 34, .44)
+}
+
+:global(.theme-light .settings-modal) {
+    border-color: rgba(47, 67, 55, .13);
+    background: linear-gradient(150deg, #fffdf6, #f5f1e7 75%);
+    box-shadow: 0 28px 90px rgba(39, 48, 35, .25)
+}
+
+:global(.theme-light .modal-heading h2) {
+    color: #293f36
+}
+
+:global(.theme-light .modal-close) {
+    border-color: rgba(47, 67, 55, .14);
+    background: rgba(38, 61, 53, .025);
+    color: #73786e
+}
+
+:global(.theme-light .modal-close:hover) {
+    color: #293f36;
+    border-color: rgba(47, 67, 55, .3)
+}
+
+:global(.theme-light .setting-copy strong) {
+    color: #293f36
+}
+
+:global(.theme-light .setting-copy small) {
+    color: #777d72
+}
+
+:global(.theme-light .setting-icon) {
+    border-color: rgba(169, 90, 53, .2);
+    background: rgba(189, 105, 65, .07);
+    color: #a95a35
+}
+
+:global(.theme-light .minute-stepper) {
+    border-color: rgba(47, 67, 55, .16);
+    background: rgba(38, 61, 53, .035)
+}
+
+:global(.theme-light .minute-stepper button) {
+    color: #485b4e
+}
+
+:global(.theme-light .minute-stepper button:hover:not(:disabled)) {
+    background: rgba(189, 105, 65, .12);
+    color: #a95531
+}
+
+:global(.theme-light .minute-stepper button:disabled) {
+    color: #b5b7ac
+}
+
+:global(.theme-light .minute-stepper>span) {
+    color: #293f36
+}
+
+:global(.theme-light .minute-stepper>span small) {
+    color: #787d73
+}
+
+:global(.theme-light .setting-divider) {
+    background: rgba(47, 67, 55, .13)
+}
+
+:global(.theme-light .done-button) {
+    background: #b9633c;
+    color: #fff8ed;
+    box-shadow: 0 7px 20px rgba(166, 83, 46, .12)
+}
+
+:global(.theme-light .done-button:hover) {
+    background: #c97847
+}
+
+@media(max-width:600px) {
+    :global(.settings-modal) {
+        padding: 23px 19px;
+        border-radius: 19px
+    }
+
+    :global(.setting-copy) {
+        gap: 9px
+    }
+
+    :global(.setting-copy small) {
+        max-width: 170px;
+        line-height: 1.45
+    }
+
+    :global(.minute-stepper) {
+        gap: 5px
+    }
+
+    :global(.minute-stepper button) {
+        width: 27px
+    }
+}
+
+:global(.theme-dark .spin-button),
+:global(.theme-dark .done-button),
+:global(.theme-dark .timer-pause-button) {
+    border-color: #5484e5;
+    background: linear-gradient(135deg, #6394f0, #386cc9);
+    color: #fff;
+    box-shadow: 0 7px 22px rgba(48, 96, 189, .23)
+}
+
+:global(.theme-dark .spin-button:hover:not(:disabled)),
+:global(.theme-dark .done-button:hover),
+:global(.theme-dark .timer-pause-button:hover) {
+    background: linear-gradient(135deg, #7da7f6, #4b7ddb)
+}
+
+:global(.theme-dark .settings-modal) {
+    border-color: rgba(164, 190, 229, .16);
+    background: linear-gradient(150deg, #1b2638, #111a29 78%)
+}
+
+:global(.theme-dark .modal-heading h2),
+:global(.theme-dark .setting-copy strong) {
+    color: #edf3ff
+}
+
+:global(.theme-dark .modal-close),
+:global(.theme-dark .minute-stepper) {
+    border-color: rgba(164, 190, 229, .16);
+    background: rgba(255, 255, 255, .035);
+    color: #aebed6
+}
+
+:global(.theme-dark .setting-copy small),
+:global(.theme-dark .minute-stepper>span small) {
+    color: #9aacc5
+}
+
+:global(.theme-dark .setting-icon) {
+    border-color: rgba(109, 151, 236, .24);
+    background: rgba(66, 111, 202, .1);
+    color: #a6beff
+}
+
+:global(.theme-dark .minute-stepper>span) {
+    color: #edf3ff
+}
+
+:global(.theme-dark .minute-stepper button) {
+    color: #d8e3f5
+}
+
+:global(.theme-dark .minute-stepper button:hover:not(:disabled)) {
+    background: rgba(66, 111, 202, .2);
+    color: #c1d4ff
+}
+
+:global(.theme-dark .setting-divider) {
+    background: rgba(164, 190, 229, .12)
+}
+
+:global(.theme-light .spin-button),
+:global(.theme-light .done-button),
+:global(.theme-light .timer-pause-button) {
+    border-color: #3479dc;
+    background: linear-gradient(135deg, #4889e5, #2868c6);
+    color: #fff;
+    box-shadow: 0 7px 20px rgba(47, 112, 206, .16)
+}
+
+:global(.theme-light .settings-modal) {
+    border-color: rgba(48, 100, 168, .15);
+    background: linear-gradient(150deg, #fff, #f5f9ff 78%)
+}
+
+:global(.theme-light .modal-heading h2),
+:global(.theme-light .setting-copy strong) {
+    color: #172b46
+}
+
+:global(.theme-light .modal-close),
+:global(.theme-light .minute-stepper) {
+    border-color: rgba(48, 100, 168, .16);
+    background: rgba(52, 121, 220, .035);
+    color: #71819a
+}
+
+:global(.theme-light .setting-copy small),
+:global(.theme-light .minute-stepper>span small) {
+    color: #687a91
+}
+
+:global(.theme-light .setting-icon) {
+    border-color: rgba(52, 121, 220, .2);
+    background: rgba(52, 121, 220, .075);
+    color: #3479dc
+}
+
+:global(.theme-light .minute-stepper>span) {
+    color: #172b46
+}
+
+:global(.theme-light .minute-stepper button) {
+    color: #3d5a7e
+}
+
+:global(.theme-light .setting-divider) {
+    background: rgba(48, 100, 168, .13)
+}
+
+:global(.ringtone-control){margin-top:17px;padding-top:15px;border-top:1px solid rgba(164,190,229,.12)}
+
+:global(.ringtone-heading){display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:10px}
+
+:global(.ringtone-heading strong){color:var(--ink);font-size:12px;font-weight:650}
+
+:global(.ringtone-heading small){color:var(--muted);font-size:10px}
+
+:global(.ringtone-options){display:grid;grid-template-columns:1fr 1fr;gap:7px}
+
+:global(.ringtone-option){min-width:0;min-height:48px;display:flex;align-items:center;gap:8px;padding:6px 9px;border:1px solid rgba(164,190,229,.13);border-radius:11px;background:rgba(255,255,255,.025);color:var(--ink);text-align:left;cursor:pointer;transition:background .18s,border-color .18s,transform .18s}
+
+:global(.ringtone-option:last-child){grid-column:1/-1}
+
+:global(.ringtone-option:hover){transform:translateY(-1px);border-color:rgba(112,151,207,.4);background:rgba(80,125,190,.08)}
+
+:global(.ringtone-option.ringtone-selected){border-color:rgba(97,143,231,.62);background:rgba(75,131,220,.12);box-shadow:inset 0 0 0 1px rgba(75,131,220,.08)}
+
+:global(.ringtone-option-icon){width:27px;height:27px;flex:none;display:grid;place-items:center;border-radius:8px;background:rgba(106,151,226,.12);color:#9abbff;font-size:16px}
+
+:global(.ringtone-option-copy){min-width:0;flex:1;display:flex;flex-direction:column;gap:2px}
+
+:global(.ringtone-option-copy strong){overflow:hidden;color:#e6edf8;font-size:10px;font-weight:650;text-overflow:ellipsis;white-space:nowrap}
+
+:global(.ringtone-option-copy small){overflow:hidden;color:#9aacc5;font-size:9px;text-overflow:ellipsis;white-space:nowrap}
+
+:global(.ringtone-check){color:#94b5ff;font-size:13px;font-weight:700}
+
+:global(.ringtone-control){border-color:rgba(164,190,229,.13)}
+
+:global(.theme-light .ringtone-control){border-color:rgba(48,100,168,.13)}
+
+:global(.theme-light .ringtone-heading strong){color:#172b46}
+
+:global(.theme-light .ringtone-heading small){color:#718198}
+
+:global(.theme-light .ringtone-option){border-color:rgba(48,100,168,.14);background:rgba(52,121,220,.02);color:#172b46}
+
+:global(.theme-light .ringtone-option:hover){border-color:rgba(52,121,220,.38);background:rgba(52,121,220,.06)}
+
+:global(.theme-light .ringtone-option.ringtone-selected){border-color:rgba(52,121,220,.55);background:rgba(52,121,220,.09)}
+
+:global(.theme-light .ringtone-option-icon){background:rgba(52,121,220,.09);color:#3479dc}
+
+:global(.theme-light .ringtone-option-copy strong){color:#203752}
+
+:global(.theme-light .ringtone-option-copy small){color:#718198}
+
+:global(.theme-light .ringtone-check){color:#2868c6}
+
+@media(max-width:600px){:global(.settings-modal){max-height:calc(100dvh - 28px);overflow-y:auto}:global(.ringtone-control){margin-top:13px;padding-top:12px}:global(.ringtone-options){gap:6px}:global(.ringtone-option){min-height:44px;padding:5px 7px}:global(.ringtone-option-icon){width:24px;height:24px}}
+
+
+.modal {
+  max-height: min(90dvh, 780px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(112, 151, 207, .35) transparent;
+}
+
+.researchIcon {
+  color: #a9c2f1;
+  background: linear-gradient(145deg, rgba(91, 137, 218, .2), rgba(63, 100, 162, .09));
+}
+
+.soundSwitch {
+  position: relative;
+  width: 54px;
+  height: 31px;
+  flex: none;
+  padding: 3px;
+  border: 1px solid rgba(151, 178, 220, .27);
+  border-radius: 999px;
+  background: linear-gradient(145deg, #253149, #1b2639);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, .24), 0 1px 0 rgba(255, 255, 255, .035);
+  cursor: pointer;
+  transition: background .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+.soundSwitch:hover {
+  border-color: rgba(135, 172, 237, .54);
+  box-shadow: 0 0 0 4px rgba(75, 126, 218, .08), inset 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.soundSwitchOn {
+  border-color: rgba(98, 147, 237, .78);
+  background: linear-gradient(135deg, #4f85e2, #3269c3);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, .22), 0 3px 11px rgba(50, 105, 195, .25);
+}
+
+.switchKnob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 23px;
+  height: 23px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .56);
+  border-radius: 50%;
+  background: linear-gradient(145deg, #f7faff, #d9e4f5);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .26), inset 0 1px 1px #fff;
+  color: #70829d;
+  transition: transform .24s cubic-bezier(.2, .8, .2, 1), color .2s;
+}
+
+.soundSwitchOn .switchKnob {
+  transform: translateX(23px);
+  color: #3473d2;
+}
+
+.switchGlyph {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.ringtonePicker {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+.ringtoneTrigger {
+  width: 100%;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 12px;
+  border: 1px solid rgba(139, 171, 222, .22);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(52, 76, 116, .35), rgba(29, 43, 66, .55));
+  color: #e8effb;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease;
+}
+
+.ringtoneTrigger:hover,
+.ringtoneTriggerOpen {
+  border-color: rgba(112, 157, 235, .68);
+  background: linear-gradient(135deg, rgba(57, 89, 143, .38), rgba(33, 53, 85, .64));
+  box-shadow: 0 0 0 3px rgba(75, 126, 218, .09);
+}
+
+.ringtoneIcon {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(138, 174, 237, .22);
+  border-radius: 11px;
+  background: linear-gradient(145deg, rgba(98, 147, 237, .2), rgba(64, 105, 176, .12));
+  color: #b9d0ff;
+  font-size: 19px;
+}
+
+.ringtoneSelectedCopy,
+.ringtoneChoiceCopy {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ringtoneSelectedCopy strong,
+.ringtoneChoiceCopy strong {
+  overflow: hidden;
+  color: #e8effb;
+  font-size: 12px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ringtoneSelectedCopy small,
+.ringtoneChoiceCopy small {
+  overflow: hidden;
+  color: #9daec8;
+  font-size: 10px;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ringtoneChevron {
+  width: 19px;
+  height: 19px;
+  flex: none;
+  color: #9eb4d6;
+  transition: transform .2s ease, color .2s ease;
+}
+
+.ringtoneChevronOpen {
+  transform: rotate(180deg);
+  color: #b9d0ff;
+}
+
+.ringtoneMenu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 8px);
+  left: 0;
+  max-height: 235px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(105, 151, 237, .72) rgba(105, 151, 237, .08);
+  scrollbar-gutter: stable;
+  padding: 6px;
+  border: 1px solid rgba(139, 171, 222, .24);
+  border-radius: 16px;
+  background: rgba(19, 29, 46, .98);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, .38), inset 0 1px rgba(255, 255, 255, .045);
+  backdrop-filter: blur(18px);
+  animation: ringtoneMenuIn .16s ease-out both;
+}
+
+.ringtoneMenu::-webkit-scrollbar { width: 9px; }
+.ringtoneMenu::-webkit-scrollbar-track {
+  margin: 9px 0;
+  border-radius: 999px;
+  background: rgba(105, 151, 237, .08);
+}
+.ringtoneMenu::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #83aefb, #4c7fd8) padding-box;
+  box-shadow: 0 0 9px rgba(90, 145, 240, .3);
+}
+.ringtoneMenu::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #a2c2ff, #5a8fe9) padding-box;
+}
+
+
+.ringtoneChoice {
+  width: 100%;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 8px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  background: transparent;
+  color: #e8effb;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .16s, background .16s, transform .16s;
+}
+
+.ringtoneChoice:hover,
+.ringtoneChoice:focus-visible {
+  border-color: rgba(126, 164, 229, .23);
+  background: rgba(91, 137, 218, .12);
+}
+
+.ringtoneChoiceSelected {
+  border-color: rgba(107, 153, 236, .42);
+  background: linear-gradient(105deg, rgba(75, 131, 220, .2), rgba(75, 131, 220, .08));
+}
+
+.ringtoneCheck {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(91, 143, 231, .2);
+  color: #b7ceff;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+:global(.theme-light) .researchIcon {
+  color: #3479dc;
+  background: linear-gradient(145deg, rgba(52, 121, 220, .14), rgba(52, 121, 220, .06));
+}
+
+:global(.theme-light) .soundSwitch {
+  border-color: rgba(63, 112, 179, .22);
+  background: linear-gradient(145deg, #e2eaf5, #d1dced);
+  box-shadow: inset 0 2px 5px rgba(37, 68, 109, .12), 0 1px #fff;
+}
+
+:global(.theme-light) .soundSwitch:hover {
+  border-color: rgba(52, 121, 220, .5);
+  box-shadow: 0 0 0 4px rgba(52, 121, 220, .07), inset 0 2px 5px rgba(37, 68, 109, .1);
+}
+
+:global(.theme-light) .soundSwitchOn {
+  border-color: #3479dc;
+  background: linear-gradient(135deg, #4f8ce4, #2868c6);
+}
+
+:global(.theme-light) .ringtoneTrigger {
+  border-color: rgba(63, 112, 179, .22);
+  background: linear-gradient(135deg, #fff, #f1f6fd);
+  color: #203752;
+}
+
+:global(.theme-light) .ringtoneTrigger:hover,
+:global(.theme-light) .ringtoneTriggerOpen {
+  border-color: rgba(52, 121, 220, .55);
+  background: #fff;
+}
+
+:global(.theme-light) .ringtoneIcon {
+  border-color: rgba(52, 121, 220, .17);
+  background: rgba(52, 121, 220, .08);
+  color: #3479dc;
+}
+
+:global(.theme-light) .ringtoneSelectedCopy strong,
+:global(.theme-light) .ringtoneChoiceCopy strong {
+  color: #203752;
+}
+
+:global(.theme-light) .ringtoneSelectedCopy small,
+:global(.theme-light) .ringtoneChoiceCopy small {
+  color: #74859d;
+}
+
+:global(.theme-light) .ringtoneChevron {
+  color: #6781a2;
+}
+
+:global(.theme-light) .ringtoneMenu {
+  border-color: rgba(63, 112, 179, .18);
+  background: rgba(250, 252, 255, .98);
+  box-shadow: 0 20px 48px rgba(37, 69, 113, .19), inset 0 1px #fff;
+}
+
+:global(.theme-light) .ringtoneChoice {
+  color: #203752;
+}
+
+:global(.theme-light) .ringtoneChoice:hover,
+:global(.theme-light) .ringtoneChoice:focus-visible {
+  border-color: rgba(52, 121, 220, .18);
+  background: rgba(52, 121, 220, .07);
+}
+
+:global(.theme-light) .ringtoneChoiceSelected {
+  border-color: rgba(52, 121, 220, .32);
+  background: linear-gradient(105deg, rgba(75, 131, 220, .12), rgba(75, 131, 220, .05));
+}
+
+:global(.theme-light) .ringtoneCheck {
+  background: rgba(52, 121, 220, .12);
+  color: #2868c6;
+}
+
+@keyframes ringtoneMenuIn {
+  from { opacity: 0; transform: translateY(5px) scale(.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .soundSwitch,
+  .switchKnob,
+  .ringtoneChevron,
+  .ringtoneChoice { transition: none; }
+.ringtoneMenu { animation: none; }
+  .ringtoneMenu::-webkit-scrollbar-thumb { box-shadow: none; }
+}
+
+/* Give each settings control an intuitive, high-contrast icon accent. */
+:global(.theme-dark) :global(.timer-setting-icon) {
+  color: #69a5ff;
+  border-color: rgba(105, 165, 255, .3);
+  background: rgba(76, 137, 225, .14);
+}
+
+:global(.theme-light) :global(.timer-setting-icon) {
+  color: #286bc5;
+  border-color: rgba(52, 121, 220, .24);
+  background: rgba(52, 121, 220, .1);
+}
+
+:global(.theme-dark) .researchIcon {
+  color: #b18aff;
+  border-color: rgba(177, 138, 255, .3);
+  background: rgba(137, 93, 220, .14);
+}
+
+:global(.theme-light) .researchIcon {
+  color: #8053ce;
+  border-color: rgba(128, 83, 206, .23);
+  background: rgba(128, 83, 206, .09);
+}
+
+:global(.theme-dark) :global(.sound-setting-icon) {
+  color: #41d0b2;
+  border-color: rgba(65, 208, 178, .28);
+  background: rgba(42, 172, 145, .13);
+}
+
+:global(.theme-light) :global(.sound-setting-icon) {
+  color: #138b73;
+  border-color: rgba(19, 139, 115, .22);
+  background: rgba(19, 139, 115, .08);
+}
+
+.ringtoneChoice:nth-child(1) .ringtoneIcon { color: #67a5ff; }
+.ringtoneChoice:nth-child(2) .ringtoneIcon { color: #42c9b0; }
+.ringtoneChoice:nth-child(3) .ringtoneIcon { color: #d9a746; }
+.ringtoneChoice:nth-child(4) .ringtoneIcon { color: #b18aff; }
+.ringtoneChoice:nth-child(5) .ringtoneIcon { color: #ef83ad; }
+
+:global(.theme-light) .ringtoneChoice:nth-child(1) .ringtoneIcon { color: #286bc5; }
+:global(.theme-light) .ringtoneChoice:nth-child(2) .ringtoneIcon { color: #138b73; }
+:global(.theme-light) .ringtoneChoice:nth-child(3) .ringtoneIcon { color: #a06c08; }
+:global(.theme-light) .ringtoneChoice:nth-child(4) .ringtoneIcon { color: #8053ce; }
+:global(.theme-light) .ringtoneChoice:nth-child(5) .ringtoneIcon { color: #ca4f7d; }
