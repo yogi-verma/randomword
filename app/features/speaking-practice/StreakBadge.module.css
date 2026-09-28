@@ -1,0 +1,198 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+}
+
+.badge {
+  height: 30px;
+  min-width: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 7px;
+  border: 1px solid rgba(151, 178, 220, .17);
+  border-radius: 999px;
+  background: rgba(35, 49, 72, .34);
+  color: #7f91ad;
+  cursor: pointer;
+  transition: color .24s ease, background .24s ease, border-color .24s ease, box-shadow .24s ease;
+}
+
+.badge:focus-visible {
+  outline: 2px solid #83aaff;
+  outline-offset: 3px;
+}
+
+.flame {
+  width: 17px;
+  height: 17px;
+  flex: none;
+  color: #8290a6;
+  transition: color .24s ease, filter .24s ease, transform .24s ease;
+}
+
+.count {
+  min-width: 1ch;
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.active {
+  border-color: rgba(244, 174, 89, .4);
+  background: linear-gradient(135deg, rgba(226, 145, 62, .17), rgba(160, 88, 38, .1));
+  color: #f2c17d;
+  box-shadow: 0 0 15px rgba(239, 157, 66, .12), inset 0 1px rgba(255, 224, 178, .06);
+  animation: streakGlow 2.8s ease-in-out infinite alternate;
+}
+
+.active .flame {
+  color: #ffbd66;
+  filter: drop-shadow(0 0 5px rgba(255, 169, 73, .68));
+  transform: translateY(-.5px);
+}
+
+.popover {
+  position: absolute;
+  z-index: 90;
+  top: calc(100% + 11px);
+  right: 0;
+  width: min(290px, calc(100vw - 24px));
+  box-sizing: border-box;
+  padding: 14px;
+  border: 1px solid rgba(145, 174, 222, .17);
+  border-radius: 13px;
+  background: #131e30;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
+  color: #e9f0fc;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-5px) scale(.98);
+  transform-origin: top right;
+  transition: opacity .18s ease, transform .18s ease, visibility .18s;
+}
+
+.popoverOpen {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.popoverHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.popoverHeading h2 {
+  margin: 0;
+  color: #f1f5fc;
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+.todayStatus {
+  padding: 4px 7px;
+  border-radius: 999px;
+  background: rgba(145, 163, 189, .1);
+  color: #9aa9bd;
+  font-size: 9px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.todayActive {
+  background: rgba(244, 174, 89, .11);
+  color: #edbd7c;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 12px;
+}
+
+.stat {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+  padding: 9px 2px;
+  border-bottom: 1px solid rgba(145, 174, 222, .1);
+}
+
+.stat strong {
+  overflow: hidden;
+  color: #dce7f8;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stat .lastActive {
+  font-size: 13px;
+}
+
+.stat span {
+  color: #91a3bd;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.tip {
+  margin: 9px 1px 0;
+  color: #9aa9bd;
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+:global(.theme-light) .badge {
+  border-color: rgba(63, 92, 134, .16);
+  background: rgba(255, 255, 255, .55);
+  color: #71839b;
+}
+
+:global(.theme-light) .flame { color: #8998ab; }
+
+:global(.theme-light) .active {
+  border-color: rgba(204, 128, 44, .3);
+  background: linear-gradient(135deg, rgba(255, 223, 176, .68), rgba(255, 246, 228, .86));
+  color: #9b5a19;
+  box-shadow: 0 0 14px rgba(228, 153, 63, .18), inset 0 1px #fff;
+}
+
+:global(.theme-light) .active .flame { color: #dc8127; }
+
+:global(.theme-light) .popover {
+  border-color: rgba(53, 103, 172, .2);
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(37, 69, 113, .16);
+  color: #203752;
+}
+
+:global(.theme-light) .popoverHeading h2 { color: #203752; }
+:global(.theme-light) .todayStatus { background: #f1f4f8; color: #6c7e95; }
+:global(.theme-light) .todayActive { background: #fff4e4; color: #9b5a19; }
+:global(.theme-light) .stat { border-color: rgba(63, 112, 179, .12); }
+:global(.theme-light) .stat strong { color: #315a8b; }
+:global(.theme-light) .stat span,
+:global(.theme-light) .tip { color: #667c99; }
+
+@keyframes streakGlow {
+  from { box-shadow: 0 0 10px rgba(239, 157, 66, .1), inset 0 1px rgba(255, 224, 178, .04); }
+  to { box-shadow: 0 0 20px rgba(239, 157, 66, .27), inset 0 1px rgba(255, 224, 178, .12); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge { animation: none; }
+  .popover { transition: none; }
+}

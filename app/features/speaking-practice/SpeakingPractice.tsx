@@ -7,10 +7,11 @@ import SettingsFeature from "../settings/Settings";
 import CategoryPicker from "../category-picker/CategoryPicker";
 import type { RingtoneStyle } from "../settings/settings.types";
 import ResearchSession from "../research-session/ResearchSession";
-import ThemeToggle from "../theme-toggle/ThemeToggle";
 import { useTheme } from "../theme-toggle/ThemeProvider";
 import { allCategoryPrompts, categories, topics } from "./topicBank";
 import { behavioralQuestions } from "../interview-mode/behavioralQuestions";
+import StreakBadge from "./StreakBadge";
+import ProfileMenu from "./ProfileMenu";
 
 
 export default function SpeakingPractice() {
@@ -332,8 +333,8 @@ export default function SpeakingPractice() {
           <div className="creator-credit"><a className="creator-instagram" href="https://www.instagram.com/its_yogiii_22/" target="_blank" rel="noreferrer" aria-label="Open Instagram profile: its_yogiii_22" title="Instagram"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="15" height="15" rx="4.5" stroke="currentColor" strokeWidth="1.6"/><circle cx="10" cy="10" r="3.4" stroke="currentColor" strokeWidth="1.6"/><circle cx="14.8" cy="5.5" r=".9" fill="currentColor"/></svg></a></div>
         </div>
         <div className="header-actions">
-          <a className="practice-guide-link" href="/guide"><span className="guide-link-wide">Practice guide</span><span className="guide-link-compact">Guide</span></a>
-          <ThemeToggle theme={theme} onToggle={() => setTheme(theme === "dark" ? "light" : "dark")} />
+          <StreakBadge />
+          <ProfileMenu theme={theme} onToggleTheme={() => setTheme(theme === "dark" ? "light" : "dark")} />
         </div>
       </header>
 
