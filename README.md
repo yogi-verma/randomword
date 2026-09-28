@@ -23,7 +23,7 @@ Practice with 50 curated behavioral interview questions. Spin to choose a questi
 ## Features
 
 - Responsive interface for desktop, tablet, and mobile screens
-- Dark and light themes
+- Dark and light themes shared across the home page, practice guide, and 404 page
 - Animated prompt spin with synchronized sound effects
 - Five selectable spin sounds, plus controls to mute sound effects
 - Speaking timer settings from 1 to 10 minutes
@@ -68,9 +68,9 @@ app/
 │   ├── research-session/      # Timed research experience
 │   ├── settings/              # Timer, sound, and ringtone preferences
 │   ├── speaking-practice/     # Main modes, prompt bank, and spin flow
-│   ├── theme-toggle/          # Dark/light theme control
+│   ├── theme-toggle/          # Dark/light control and shared theme provider
 │   └── timer/                 # Speaking timer experience
-├── guide/                     # Search-friendly speaking-practice guide
+├── guide/                     # Search-friendly speaking-practice guide and theme frame
 ├── globals.css                # Global styles and design tokens
 ├── layout.tsx                 # App metadata and root layout
 └── page.tsx                   # Home page

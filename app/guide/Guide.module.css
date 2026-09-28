@@ -2,7 +2,9 @@
   --guide-ink: #edf3ff;
   --guide-muted: #a5b4ca;
   --guide-blue: #85adf2;
-  min-height: 100dvh;
+  height: 100dvh;
+  min-height: 0;
+  flex: 1 1 auto;
   overflow-x: hidden;
   overflow-y: auto;
   color: var(--guide-ink);
@@ -59,3 +61,49 @@
 @media(prefers-reduced-motion:reduce) {
   .backLink,.primaryLink { transition: none; }
 }
+
+@media (min-width: 601px) and (max-height: 900px) {
+  .header { min-height: 64px; }
+  .article { padding-top: 54px; }
+  .article h1 { font-size: clamp(36px, 5vw, 58px); }
+  .section h2 { font-size: clamp(25px, 3.2vw, 34px); }
+  .lede { margin-top: 20px; font-size: 17px; }
+  .section > p, .faq p { font-size: 14px; }
+  .bottomCta p { font-size: 22px; }
+}
+
+.page.theme-light {
+  --guide-ink: #17263b;
+  --guide-muted: #586b83;
+  --guide-blue: #3479dc;
+  background: radial-gradient(ellipse at 14% 2%, rgba(66, 131, 218, .12), transparent 36%), linear-gradient(180deg, #f6f9fe 0%, #edf3fb 100%);
+}
+:global(html[data-theme="light"]) .page {
+  --guide-ink: #17263b;
+  --guide-muted: #586b83;
+  --guide-blue: #3479dc;
+  background: radial-gradient(ellipse at 14% 2%, rgba(66, 131, 218, .12), transparent 36%), linear-gradient(180deg, #f6f9fe 0%, #edf3fb 100%);
+}
+.page.theme-light .header,
+:global(html[data-theme="light"]) .page .header { border-color: rgba(50, 82, 126, .14); }
+.page.theme-light .steps li,
+.page.theme-light .modeCard,
+.page.theme-light .bottomCta,
+:global(html[data-theme="light"]) .page .steps li,
+:global(html[data-theme="light"]) .page .modeCard,
+:global(html[data-theme="light"]) .page .bottomCta { border-color: rgba(50, 82, 126, .15); background: rgba(255, 255, 255, .72); }
+.page.theme-light .modeCard,
+:global(html[data-theme="light"]) .page .modeCard { background: linear-gradient(145deg, #fff, #f4f8fe); }
+.page.theme-light .faq,
+:global(html[data-theme="light"]) .page .faq { border-color: rgba(50, 82, 126, .15); }
+:global(html[data-theme="light"]) .page .steps li strong { color: var(--guide-ink); }
+.page.theme-light .header { border-color: rgba(50, 82, 126, .14); }
+.page.theme-light .steps li,
+.page.theme-light .modeCard,
+.page.theme-light .bottomCta { border-color: rgba(50, 82, 126, .15); background: rgba(255, 255, 255, .72); }
+.page.theme-light .steps li { color: var(--guide-muted); }
+.page.theme-light .modeCard { background: linear-gradient(145deg, #fff, #f4f8fe); }
+.page.theme-light .faq { border-color: rgba(50, 82, 126, .15); }
+.page.theme-light .kicker,
+.page.theme-light .steps li::before,
+.page.theme-light .modeNumber { color: #3479dc; }

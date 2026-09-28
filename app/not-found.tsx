@@ -1,9 +1,13 @@
+'use client'
+
 import Link from 'next/link'
 import styles from './not-found.module.css'
+import { useTheme } from './features/theme-toggle/ThemeProvider'
 
 export default function NotFound() {
+  const { theme } = useTheme()
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} theme-${theme}`}>
       <div className={styles.glow} aria-hidden="true" />
       <div className={styles.content}>
         <Link className={styles.brand} href="/" aria-label="randomword.cool home">

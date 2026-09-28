@@ -57,7 +57,7 @@ export default function ResearchSession({ open, minutes, word, theme, onDone, on
           <h1 className={styles.prompt}>{word}</h1>
           <p className={styles.description}>Take your time. Explore the idea, gather your thoughts, then come back ready to speak.</p>
           <div className={styles.clock} aria-live="polite">
-            <div className={styles.clockTrack} style={{ background: `conic-gradient(var(--clock-accent) ${progress * 360}deg, var(--clock-track) 0deg)` }}>
+            <div className={styles.clockTrack} style={{ background: `conic-gradient(var(--clock-accent) 0deg ${progress * 360}deg, var(--clock-track) ${progress * 360}deg 360deg)` }}>
               <div className={styles.clockFace}>
                 <span className={styles.time}>{formattedTime}</span>
                 <span className={styles.clockCaption}>{seconds === 0 ? "TIME TO SPEAK" : "RESEARCH TIME"}</span>

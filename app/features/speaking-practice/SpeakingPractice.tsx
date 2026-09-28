@@ -8,6 +8,7 @@ import CategoryPicker from "../category-picker/CategoryPicker";
 import type { RingtoneStyle } from "../settings/settings.types";
 import ResearchSession from "../research-session/ResearchSession";
 import ThemeToggle from "../theme-toggle/ThemeToggle";
+import { useTheme } from "../theme-toggle/ThemeProvider";
 import { allCategoryPrompts, categories, topics } from "./topicBank";
 import { behavioralQuestions } from "../interview-mode/behavioralQuestions";
 
@@ -32,22 +33,11 @@ export default function SpeakingPractice() {
   const [rounds, setRounds] = useState(0);
   const [showSettings, setShowSettings] = useState(false);
   const [researchOpen, setResearchOpen] = useState(false);
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-  const [themeLoaded, setThemeLoaded] = useState(false);
+  const { theme, setTheme } = useTheme();
   const previousWord = useRef(word);
   const audioContextRef = useRef<AudioContext | null>(null);
   const secondsRef = useRef(seconds);
   secondsRef.current = seconds;
-
-  useEffect(() => {
-    const savedTheme = window.localStorage.getItem("randomword-theme");
-    if (savedTheme === "light" || savedTheme === "dark") setTheme(savedTheme);
-    setThemeLoaded(true);
-  }, []);
-
-  useEffect(() => {
-    if (themeLoaded) window.localStorage.setItem("randomword-theme", theme);
-  }, [theme, themeLoaded]);
 
   useEffect(() => {
     if (!showSettings) return;

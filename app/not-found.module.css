@@ -94,7 +94,7 @@
 }
 
 .number {
-  font-size: clamp(118px, 27vw, 190px);
+  font-size: clamp(96px, 21vw, 150px);
   font-weight: 600;
   letter-spacing: -.09em;
   text-shadow: 0 0 45px rgba(84, 151, 239, .17);
@@ -136,7 +136,7 @@
   max-width: 560px;
   margin: 0;
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(32px, 6vw, 48px);
+  font-size: clamp(30px, 5vw, 42px);
   font-weight: 600;
   letter-spacing: -.045em;
   line-height: 1.12;
@@ -217,3 +217,45 @@
 @media (prefers-reduced-motion: reduce) {
   .glow, .content, .orbit, .number, .word, .sparkle, .smallSparkle { animation: none; }
 }
+
+.page.theme-light {
+  background: radial-gradient(ellipse at 50% 43%, rgba(52, 121, 220, .11), transparent 48%), linear-gradient(145deg, #f7faff, #edf3fb 55%, #f4f8fd);
+  color: #17263b;
+}
+:global(html[data-theme="light"]) .page {
+  background: radial-gradient(ellipse at 50% 43%, rgba(52, 121, 220, .11), transparent 48%), linear-gradient(145deg, #f7faff, #edf3fb 55%, #f4f8fd);
+  color: #17263b;
+}
+.page.theme-light .glow,
+:global(html[data-theme="light"]) .page .glow { border-color: rgba(52, 121, 220, .16); }
+.page.theme-light .brand,
+:global(html[data-theme="light"]) .page .brand,
+.page.theme-light .number,
+:global(html[data-theme="light"]) .page .number { color: #17263b; }
+.page.theme-light .orbit span,
+:global(html[data-theme="light"]) .page .orbit span { background: #f1f6fd; color: #3479dc; }
+.page.theme-light .word,
+.page.theme-light .eyebrow,
+.page.theme-light .sparkle,
+.page.theme-light .smallSparkle,
+:global(html[data-theme="light"]) .page .word,
+:global(html[data-theme="light"]) .page .eyebrow,
+:global(html[data-theme="light"]) .page .sparkle,
+:global(html[data-theme="light"]) .page .smallSparkle { color: #3479dc; }
+.page.theme-light .description,
+:global(html[data-theme="light"]) .page .description { color: #5a6e88; }
+.page.theme-light .code,
+:global(html[data-theme="light"]) .page .code { color: #75869b; }
+.page.theme-light .code span,
+:global(html[data-theme="light"]) .page .code span { color: #4b6381; }
+.page.theme-light .glow { border-color: rgba(52, 121, 220, .16); box-shadow: 0 0 100px rgba(46, 119, 215, .08), inset 0 0 80px rgba(46, 119, 215, .035); }
+.page.theme-light .brand { color: #17263b; }
+.page.theme-light .orbit span { background: #f1f6fd; color: #3479dc; }
+.page.theme-light .number { color: #17263b; }
+.page.theme-light .word,
+.page.theme-light .eyebrow,
+.page.theme-light .sparkle,
+.page.theme-light .smallSparkle { color: #3479dc; }
+.page.theme-light .description { color: #5a6e88; }
+.page.theme-light .code { color: #75869b; }
+.page.theme-light .code span { color: #4b6381; }

@@ -382,3 +382,20 @@
 @media (prefers-reduced-motion: reduce) {
   .card { animation: none; }
 }
+
+/* Keep the clock face and its digits balanced as the viewport grows. */
+.clock {
+  container-type: inline-size;
+  flex: none;
+}
+.clockTrack,
+.clockFace { box-sizing: border-box; }
+.clockTrack { aspect-ratio: 1; }
+.clockFace { min-width: 0; min-height: 0; overflow: hidden; }
+.time {
+  max-width: 100%;
+  font-size: clamp(42px, 23cqw, 58px);
+  letter-spacing: -.055em;
+  line-height: 1;
+}
+.clockCaption { line-height: 1.2; }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import styles from "./Guide.module.css";
 import { siteUrl } from "../site";
+import GuideThemeFrame from "./GuideThemeFrame";
 
 export const metadata: Metadata = {
   title: "English Speaking & Communication Practice Guide",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function PracticeGuidePage() {
   return (
-    <main className={styles.page}>
+    <GuideThemeFrame>
       <header className={styles.header}>
         <a className={styles.brand} href="/" aria-label="randomword.cool home">randomword<span>.cool</span></a>
         <a className={styles.backLink} href="/">← Back to practice</a>
@@ -92,6 +93,6 @@ export default function PracticeGuidePage() {
           <a className={styles.primaryLink} href="/">Try randomword.cool <span aria-hidden="true">→</span></a>
         </div>
       </article>
-    </main>
+    </GuideThemeFrame>
   );
 }
