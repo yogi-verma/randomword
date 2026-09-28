@@ -65,7 +65,7 @@ export default function ResearchSession({ open, minutes, word, theme, onDone, on
             </div>
           </div>
           <div className={styles.actions}>
-            <button className={styles.doneButton} onClick={onDone}>Research done <span aria-hidden="true">→</span></button>
+            <button className={styles.doneButton} onClick={onDone}>Start speaking <span aria-hidden="true">→</span></button>
             <button className={styles.closeButton} onClick={onClose}>Close</button>
           </div>
         </div>

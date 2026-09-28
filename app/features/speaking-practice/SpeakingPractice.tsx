@@ -313,6 +313,19 @@ export default function SpeakingPractice() {
     <main className={`${styles.practiceFeature} stage theme-${theme}`}>
       <div className="ambient ambient-left" aria-hidden="true" />
       <div className="ambient ambient-right" aria-hidden="true" />
+      <div className="word-orbits" aria-hidden="true">
+        <span className="orbit-letter orbit-y" data-letter="Y" />
+        <span className="orbit-letter orbit-g" data-letter="G" />
+        <span className="orbit-letter orbit-h" data-letter="H" />
+        <span className="orbit-letter orbit-e" data-letter="E" />
+        <span className="orbit-letter orbit-o" data-letter="O" />
+        <span className="orbit-letter orbit-s" data-letter="S" />
+        <span className="orbit-icon orbit-mic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="9" y="3" width="6" height="12" rx="3" stroke="currentColor" strokeWidth="1.6"/><path d="M6.5 11a5.5 5.5 0 0 0 11 0M12 16.5V21m-3 0h6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg></span>
+        <span className="orbit-icon orbit-clock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8" stroke="currentColor" strokeWidth="1.6"/><path d="M12 9v4l2.5 1.5M9 2.5h6M12 2.5v2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
+        <span className="orbit-icon orbit-idea" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18h6m-5 3h4m-5-6.5a7 7 0 1 1 6 0c-.8.5-1 1.1-1 2.5h-4c0-1.4-.2-2-1-2.5Z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
+        <span className="orbit-icon orbit-research" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.2" stroke="currentColor" strokeWidth="1.6"/><path d="m15.1 15.1 4.1 4.1m-8.7-11v4.6m-2.3-2.3h4.6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/></svg></span>
+        <span className="orbit-icon orbit-chat" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 18.5V6.8A2.8 2.8 0 0 1 7.8 4h8.4A2.8 2.8 0 0 1 19 6.8v6.4a2.8 2.8 0 0 1-2.8 2.8H9l-4 2.5Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/><path d="M8.5 8.5h7m-7 3.5h4.8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg></span>
+      </div>
       <header className="topbar">
         <div className="brand-stack">
           <a className="brand" href="/" aria-label="Randomword home"><span className="brand-mark" aria-hidden="true"><span className="brand-orbit"><span className="brand-orbit-r">r</span><span className="brand-orbit-w">w</span></span></span><span>randomword<span className="brand-cool">.cool</span></span></a>

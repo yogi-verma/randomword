@@ -399,3 +399,99 @@
   line-height: 1;
 }
 .clockCaption { line-height: 1.2; }
+
+/* Keep research visually in step with the compact speaking timer. */
+.content {
+  min-height: calc(100dvh - 48px);
+  padding: clamp(12px, 2.2vh, 22px) clamp(16px, 4vw, 36px) max(16px, env(safe-area-inset-bottom));
+}
+
+.eyebrow {
+  font-size: 9px;
+}
+
+.prompt {
+  margin-top: 8px;
+  font-size: clamp(26px, 3.5vw, 40px);
+  line-height: 1.08;
+}
+
+.description {
+  max-width: 390px;
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.clock {
+  width: clamp(156px, 24vh, 210px);
+  margin: clamp(14px, 2.4vh, 22px) 0 16px;
+  padding: 6px;
+}
+
+.clockTrack {
+  padding: 5px;
+}
+
+.time {
+  font-size: clamp(40px, 20cqw, 52px);
+}
+
+.clockCaption {
+  font-size: 8px;
+}
+
+.actions {
+  width: min(100%, 360px);
+  grid-template-columns: minmax(0, 1fr) 88px;
+  gap: 8px;
+}
+
+.doneButton,
+.closeButton {
+  min-height: 44px;
+  border-radius: 12px;
+  font-size: 11px;
+}
+
+.doneButton {
+  gap: 7px;
+}
+
+.doneButton span {
+  font-size: 14px;
+}
+
+@media (max-width: 520px) {
+  .content {
+    min-height: calc(100dvh - 48px);
+    padding: 12px 15px max(14px, env(safe-area-inset-bottom));
+  }
+
+  .prompt {
+    font-size: clamp(24px, 7vw, 34px);
+  }
+
+  .description {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .clock {
+    width: clamp(148px, 24vh, 184px);
+    margin: 12px 0 14px;
+  }
+
+  .actions {
+    width: min(100%, 330px);
+    grid-template-columns: minmax(0, 1fr) 78px;
+    gap: 7px;
+  }
+
+  .doneButton,
+  .closeButton {
+    min-height: 42px;
+    padding: 0 8px;
+    font-size: 10px;
+  }
+}
