@@ -495,3 +495,48 @@
     font-size: 10px;
   }
 }
+
+/* Compact the research actions and render Close as an underlined text link. */
+.actions {
+  width: min(100%, 360px);
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+}
+
+.doneButton {
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 11px;
+  font-size: 12px;
+}
+
+.closeButton,
+.light .closeButton {
+  min-width: 0;
+  min-height: 0;
+  padding: 6px 2px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #bdcbe0;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.closeButton:hover,
+.light .closeButton:hover {
+  border: 0;
+  background: transparent;
+  color: #91b5ff;
+}
+
+.light .closeButton { color: #506a8a; }
+.light .closeButton:hover { color: #2868c6; }
+
+@media (max-width: 520px) {
+  .actions { gap: 12px; }
+  .doneButton { min-height: 38px; padding: 0 12px; font-size: 11px; }
+  .closeButton, .light .closeButton { padding: 5px 2px; font-size: 11px; }
+}

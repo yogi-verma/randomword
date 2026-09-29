@@ -1651,3 +1651,181 @@
     font-size: 10px;
   }
 }
+
+/* Match the layered research clock in speaking and interview timer screens. */
+:global(.timer-screen) {
+  --stopwatch-accent: #6394f0;
+  --stopwatch-track: rgba(129, 161, 215, .12);
+}
+
+:global(.theme-light .timer-screen) {
+  --stopwatch-accent: #3479dc;
+  --stopwatch-track: rgba(52, 121, 220, .12);
+}
+
+:global(.timer-screen .stopwatch-wrap) {
+  container-type: inline-size;
+  box-sizing: border-box;
+  padding: 8px;
+  border-radius: 50%;
+  background: var(--stopwatch-track);
+  filter: none;
+  box-shadow: 0 0 50px rgba(75, 132, 224, .08);
+}
+
+:global(.timer-screen .stopwatch-ring) {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  padding: 7px;
+  border-radius: 50%;
+  transform: rotate(-90deg);
+  transition: background 1s linear;
+}
+
+:global(.timer-screen .stopwatch-face) {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  gap: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(142, 174, 224, .12);
+  background: radial-gradient(circle at 50% 38%, rgba(40, 62, 97, .58), #121d30 72%);
+  transform: rotate(90deg);
+}
+
+:global(.theme-light .timer-screen .stopwatch-face) {
+  border-color: rgba(63, 112, 179, .1);
+  background: radial-gradient(circle at 50% 38%, #fff, #eef4fc 72%);
+}
+
+:global(.timer-screen .stopwatch-time) {
+  color: #94b8ff;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(40px, 20cqw, 52px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -.055em;
+}
+
+:global(.timer-screen .stopwatch-time.time-complete) {
+  font-size: clamp(38px, 19cqw, 50px);
+}
+
+:global(.theme-light .timer-screen .stopwatch-time) {
+  color: #2868c6;
+}
+
+:global(.timer-screen .stopwatch-state) {
+  color: #899cb9;
+  font-size: 8px;
+  font-weight: 750;
+  letter-spacing: .17em;
+  line-height: 1.2;
+}
+
+:global(.theme-light .timer-screen .stopwatch-state) {
+  color: #718198;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(.timer-screen .stopwatch-ring) {
+    transition: none;
+  }
+}
+
+/* A shared, calm blue prompt treatment for both timer modes and themes. */
+:global(.timer-screen .cue-hint) {
+  width: min(100%, 460px);
+  min-height: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  border: 0;
+  border-radius: 0;
+  color: #b9d0ff;
+  font-size: 12px;
+  font-weight: 550;
+  line-height: 1.4;
+  text-align: center;
+}
+
+:global(.timer-screen .cue-hint strong) {
+  color: #e0eaff;
+  font-weight: 800;
+}
+
+:global(.theme-light .timer-screen .cue-hint) {
+  background: rgba(70, 132, 222, .075);
+  color: #315f9b;
+}
+
+:global(.theme-light .timer-screen .cue-hint strong) {
+  color: #205cad;
+}
+
+@media (max-width: 600px) {
+  :global(.timer-screen .cue-hint) {
+    margin: 7px 0 9px;
+    padding: 8px 11px;
+    font-size: 10px;
+  }
+}
+
+/* Keep the timer actions compact and make Close a quiet text action. */
+:global(.timer-screen .timer-screen-actions) {
+  width: min(100%, 340px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+:global(.timer-screen .timer-end-button) {
+  flex: 0 0 auto;
+  min-width: 0;
+  width: auto;
+  height: auto;
+  padding: 6px 2px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #bdcbe0;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transform: none;
+  transition: color .18s ease;
+}
+
+:global(.timer-screen .timer-end-button:hover) {
+  border: 0;
+  background: transparent;
+  color: #91b5ff;
+}
+
+:global(.theme-light .timer-screen .timer-end-button) {
+  color: #506a8a;
+}
+
+:global(.theme-light .timer-screen .timer-end-button:hover) {
+  color: #2868c6;
+}
+
+@media (max-width: 600px) {
+  :global(.timer-screen .timer-screen-actions) {
+    width: min(100%, 320px);
+    justify-content: center;
+  }
+
+  :global(.timer-screen .timer-end-button) {
+    padding: 5px 2px;
+    font-size: 11px;
+  }
+}

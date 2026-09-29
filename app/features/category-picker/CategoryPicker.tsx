@@ -85,11 +85,16 @@ type CategoryPickerProps = {
   category: string;
   categories: string[];
   onChange: (category: string) => void;
+  disabled?: boolean;
 };
 
-export default function CategoryPicker({ category, categories, onChange }: CategoryPickerProps) {
+export default function CategoryPicker({ category, categories, onChange, disabled = false }: CategoryPickerProps) {
   const [open, setOpen] = useState(false);
   const pickerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (disabled) setOpen(false);
+  }, [disabled]);
 
   useEffect(() => {
     const closeOnOutsideClick = (event: PointerEvent) => {
@@ -108,10 +113,10 @@ export default function CategoryPicker({ category, categories, onChange }: Categ
 
   return (
     <div className={`category-picker ${styles.categoryPickerFeature}`} ref={pickerRef}>
-      <button className={`category-trigger${open ? " picker-open" : ""}`} type="button" aria-haspopup="listbox" aria-expanded={open} aria-label={`Topic category: ${category}`} onClick={() => setOpen((value) => !value)} onKeyDown={(event) => { if (event.key === "Escape") setOpen(false); if (event.key === "ArrowDown" && !open) { event.preventDefault(); setOpen(true); } }}>
+      <button className={`category-trigger${open ? " picker-open" : ""}`} type="button" disabled={disabled} aria-haspopup="listbox" aria-expanded={open} aria-label={`Topic category: ${category}`} onClick={() => setOpen((value) => !value)} onKeyDown={(event) => { if (event.key === "Escape") setOpen(false); if (event.key === "ArrowDown" && !open) { event.preventDefault(); setOpen(true); } }}>
         <span className={`category-icon ${styles.categoryIcon}`}><CategoryIcon category={category} /></span><span className="category-current">{category}</span><svg className="select-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4.5 6 3.5 3.5L11.5 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
       </button>
-      {open && <div className={`category-menu ${styles.categoryMenu}`} role="listbox" aria-label="Choose a topic category">{categories.map((item) => <button key={item} type="button" role="option" aria-selected={category === item} className={`category-option${category === item ? " selected" : ""}`} onClick={() => { onChange(item); setOpen(false); }}><span className={`category-icon ${styles.categoryIcon}`}><CategoryIcon category={item} /></span><span className="category-option-copy"><span>{item}</span></span>{category === item && <span className="category-check">✓</span>}</button>)}</div>}
+      {open && <div className={`category-menu ${styles.categoryMenu}`} role="listbox" aria-label="Choose a topic category">{categories.map((item) => <button key={item} type="button" role="option" disabled={disabled} aria-selected={category === item} className={`category-option${category === item ? " selected" : ""}`} onClick={() => { onChange(item); setOpen(false); }}><span className={`category-icon ${styles.categoryIcon}`}><CategoryIcon category={item} /></span><span className="category-option-copy"><span>{item}</span></span>{category === item && <span className="category-check">✓</span>}</button>)}</div>}
     </div>
   );
 }

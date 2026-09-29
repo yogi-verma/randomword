@@ -13,15 +13,12 @@ type TimerProps = {
   formattedTime: string;
   activeCue: number;
   timerProgress: number;
-  timerCircumference: number;
   word: string;
   isInterview?: boolean;
   onClose: () => void;
-  onToggle: () => void;
-  onRestart: () => void;
 };
 
-export default function TimerFeature({ open, closing, running, seconds, speechMinutes, formattedTime, activeCue, timerProgress, timerCircumference, word, isInterview = false, onClose, onToggle, onRestart }: TimerProps) {
+export default function TimerFeature({ open, closing, running, seconds, speechMinutes, formattedTime, activeCue, timerProgress, word, isInterview = false, onClose }: TimerProps) {
   const [hintOpen, setHintOpen] = useState(false);
   const [celebration, setCelebration] = useState<ReturnType<typeof recordOneMinuteCompletion> | null>(null);
   const hintInteracted = useRef(false);
@@ -86,9 +83,19 @@ export default function TimerFeature({ open, closing, running, seconds, speechMi
               {!isInterview && <div id="timer-speaking-idea" className={`timer-help-bubble${hintOpen ? " timer-help-visible" : ""}`} role="status" aria-live="polite">{hint}</div>}
             </div>
             <div className="timer-cues" aria-label={isInterview ? "STAR answer structure" : "Speaking structure"}>{(isInterview ? ["Situation", "Task", "Action + result"] : ["What?", "So what?", "Now what?"]).map((cue, index) => <div key={cue} aria-current={activeCue === index ? "step" : undefined} className={`timer-cue${activeCue === index && seconds > 0 ? " cue-active" : ""}${activeCue > index || seconds === 0 ? " cue-complete" : ""}`}><span className="cue-number">{activeCue > index || seconds === 0 ? "✓" : `0${index + 1}`}</span><span>{cue}</span></div>)}</div>
-            <div className="stopwatch-wrap"><svg className="stopwatch-dial" viewBox="0 0 256 256" aria-hidden="true"><circle className="stopwatch-track" cx="128" cy="128" r="112"/><circle className="stopwatch-progress" cx="128" cy="128" r="112" style={{ strokeDasharray: timerCircumference, strokeDashoffset: timerCircumference * (1 - timerProgress) }}/><circle className="stopwatch-cap" cx="128" cy="16" r="4" style={{ opacity: seconds > 0 ? 1 : 0 }}/></svg><div className="stopwatch-face"><span className={`stopwatch-time${seconds === 0 ? " time-complete" : ""}`} aria-live="polite">{formattedTime}</span><span className="stopwatch-state">{seconds === 0 ? "COMPLETE" : running ? "TIME TO SPEAK" : "PAUSED"}</span></div></div>
-            <p className="cue-hint">{seconds === 0 ? "Beautifully done. You showed up and spoke." : isInterview ? "Shape your answer with STAR: Situation, Task, Action, Result." : ["Set the scene. What is it?", "Explore why it matters to you.", "Where could the idea lead?"][activeCue]}</p>
-            <div className="timer-screen-actions">{seconds > 0 ? <button className="timer-pause-button" onClick={onToggle}><span className="pause-icon">{running ? "Ⅱ" : "▶"}</span>{running ? "Pause" : "Resume"}</button> : <button className="timer-pause-button" onClick={() => { setCelebration(null); onRestart(); }}><span className="pause-icon">↻</span>Another round</button>}<button className="timer-end-button" onClick={closeTimer}>Close</button></div>
+            <div className="stopwatch-wrap">
+              <div
+                className="stopwatch-ring"
+                style={{ background: `conic-gradient(var(--stopwatch-accent) ${timerProgress * 360}deg, var(--stopwatch-track) ${timerProgress * 360}deg 360deg)` }}
+              >
+                <div className="stopwatch-face">
+                  <span className={`stopwatch-time${seconds === 0 ? " time-complete" : ""}`} aria-live="polite">{formattedTime}</span>
+                  <span className="stopwatch-state">{seconds === 0 ? "COMPLETE" : running ? "TIME TO SPEAK" : "PAUSED"}</span>
+                </div>
+              </div>
+            </div>
+            <p className="cue-hint"><span>{seconds === 0 ? "Beautifully done. You showed up and spoke." : isInterview ? <>Shape your answer with <strong>STAR</strong>: Situation, Task, Action, Result.</> : ["Set the scene. What is it?", "Explore why it matters to you.", "Where could the idea lead?"][activeCue]}</span></p>
+            <div className="timer-screen-actions"><button className="timer-end-button" onClick={closeTimer}>Close</button></div>
           </div>
         </div>
       </section>
