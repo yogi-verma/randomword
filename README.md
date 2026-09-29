@@ -2,23 +2,25 @@
 
 **A prompt. A minute. No preparation.**
 
-randomword.cool is a lightweight speaking-practice app for building confidence, clarity, and quick thinking. Choose a practice mode, spin for a prompt, and start speaking—no account or setup required.
+randomword.cool is a lightweight speaking-practice app for building confidence, clarity, and quick thinking. Choose a practice mode, spin for a prompt, and practice at your own pace—no account or setup required.
+
+At the start of a visit, spin once in each mode before using that mode's timer or research action. This keeps the prompt selection at the center of every practice round; the unlock resets when the page is reloaded.
 
 ## Practice modes
 
 ### Off the Cuff
 
-Pick a topic category and spin for a single-word prompt. Speak from your first thought, with an optional timer to keep each round focused.
+Pick a topic category and spin for a single-word prompt. Speak from your first thought, with an optional timer to keep each round focused. The timer starts when you open it and runs for the duration selected in settings.
 
 Categories include General, Personal Finance, Entrepreneurship, Startups, Tech / AI, Fitness, Nutrition, Productivity, History, Literature, Creativity, Everyday Life, Big Questions, Creator Economy, Climate & Energy, Gaming, Wellness, Pop Culture, Internet Culture, Science & Space, and Fashion & Design.
 
 ### Deep Research
 
-Spin for a word drawn from all categories, then take a focused research session before speaking. Choose a research duration from 10 to 30 minutes. When you finish, the app opens a one-minute speaking round for your word.
+Spin for a word drawn from all categories, then take a focused research session before speaking. Choose a research duration from 10 to 30 minutes. When you click **Done Research**, a one-minute speaking timer opens at `01:00` and waits. Click **Ready to Speak** when you are prepared; the countdown then begins.
 
 ### Interview
 
-Practice with 50 curated behavioral interview questions. Spin to choose a question, then answer it in a fixed one-minute round. The timer offers a simple **STAR** structure: Situation, Task, and Action + Result.
+Practice with curated behavioral interview questions. Spin to choose a question, then start a fixed one-minute round. The timer offers a simple **STAR** structure: Situation, Task, and Action + Result.
 
 ## Features
 
@@ -28,6 +30,9 @@ Practice with 50 curated behavioral interview questions. Spin to choose a questi
 - Five selectable spin sounds, plus controls to mute sound effects
 - Speaking timer settings from 1 to 10 minutes
 - Research timer settings from 10 to 30 minutes
+- Daily speaking streaks, longest streak, last active date, and round count
+- Download and share options on the daily streak celebration card
+- Streak data stored in the current browser, with no account or cross-device sync
 - Optional word definitions in speaking sessions
 - Accessible controls and reduced-motion support
 - No sign-up, account, or backend required

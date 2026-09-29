@@ -1804,6 +1804,50 @@
   transition: color .18s ease;
 }
 
+:global(.timer-screen .timer-ready-actions) {
+  gap: 18px;
+}
+
+:global(.timer-screen .timer-ready-button) {
+  min-height: 40px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 1px solid rgba(142, 178, 241, .34);
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6394f0, #3975d0);
+  box-shadow: 0 8px 22px rgba(56, 113, 206, .2);
+  color: #fff;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .18s ease, filter .18s ease;
+}
+
+:global(.timer-screen .timer-ready-button:hover) {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+:global(.timer-screen .timer-ready-button span) {
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  :global(.timer-screen .timer-ready-actions) {
+    gap: 12px;
+  }
+
+  :global(.timer-screen .timer-ready-button) {
+    min-height: 38px;
+    padding: 0 14px;
+    font-size: 11px;
+  }
+}
+
 :global(.timer-screen .timer-end-button:hover) {
   border: 0;
   background: transparent;

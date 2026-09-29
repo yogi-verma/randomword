@@ -19,6 +19,7 @@ export default function SpeakingPractice() {
   const [mode, setMode] = useState<"cuff" | "research" | "interview">("cuff");
   const [word, setWord] = useState("Time");
   const [spinning, setSpinning] = useState(false);
+  const [hasSpunInMode, setHasSpunInMode] = useState({ cuff: false, research: false, interview: false });
   const [spinAnimationMs, setSpinAnimationMs] = useState(190);
   const [seconds, setSeconds] = useState(60);
   const [speechMinutes, setSpeechMinutes] = useState(1);
@@ -27,6 +28,7 @@ export default function SpeakingPractice() {
   const [draftResearchMinutes, setDraftResearchMinutes] = useState(10);
   const [running, setRunning] = useState(false);
   const [timerOpen, setTimerOpen] = useState(false);
+  const [awaitingReadyToSpeak, setAwaitingReadyToSpeak] = useState(false);
   const [timerClosing, setTimerClosing] = useState(false);
   const [soundOn, setSoundOn] = useState(true);
   const [ringtoneStyle, setRingtoneStyle] = useState<RingtoneStyle>("wheel");
@@ -209,6 +211,7 @@ export default function SpeakingPractice() {
         ringComplete();
         previousWord.current = next;
         setSpinning(false);
+        setHasSpunInMode((current) => ({ ...current, [mode]: true }));
         setSeconds(speechMinutes * 60);
         setRunning(false);
         setRounds((value) => value + 1);
@@ -265,7 +268,7 @@ export default function SpeakingPractice() {
   };
 
   const startTimer = () => {
-    if (spinning) return;
+    if (spinning || !hasSpunInMode.cuff) return;
     unlockAudio();
     setSeconds(speechMinutes * 60);
     setTimerClosing(false);
@@ -274,7 +277,7 @@ export default function SpeakingPractice() {
   };
 
   const startInterviewTimer = () => {
-    if (spinning) return;
+    if (spinning || !hasSpunInMode.interview) return;
     unlockAudio();
     setSpeechMinutes(1);
     setSeconds(60);
@@ -284,7 +287,7 @@ export default function SpeakingPractice() {
   };
 
   const startResearch = () => {
-    if (spinning) return;
+    if (spinning || !hasSpunInMode.research) return;
     setResearchOpen(true);
   };
 
@@ -294,7 +297,13 @@ export default function SpeakingPractice() {
     setSeconds(60);
     setTimerClosing(false);
     setTimerOpen(true);
+    setRunning(false);
+    setAwaitingReadyToSpeak(true);
+  };
+
+  const readyToSpeak = () => {
     unlockAudio();
+    setAwaitingReadyToSpeak(false);
     setRunning(true);
   };
 
@@ -302,6 +311,7 @@ export default function SpeakingPractice() {
     if (timerClosing) return;
     setTimerClosing(true);
     setRunning(false);
+    setAwaitingReadyToSpeak(false);
     window.setTimeout(() => {
       setTimerOpen(false);
       setTimerClosing(false);
@@ -362,9 +372,9 @@ export default function SpeakingPractice() {
         <div className="actions">
           <button className="spin-button" onClick={spin} disabled={spinning}><span className="spin-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7v5h-5M4.8 9a7.5 7.5 0 0 1 12.8-2L20 9M4 17v-5h5m10.2 3a7.5 7.5 0 0 1-12.8 2L4 15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg></span><span>{spinning ? "Spinning…" : mode === "interview" ? "Spin for a question" : "Spin for a word"}</span></button>
           {mode !== "research" ? (
-          <button className={`timer-button${running ? " timer-running" : ""}`} onClick={mode === "interview" ? startInterviewTimer : startTimer} disabled={spinning}><span className="timer-symbol" aria-hidden="true">{running ? <svg viewBox="0 0 24 24" fill="none"><path d="M8 6v12m8-12v12" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/></svg> : <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8" stroke="currentColor" strokeWidth="1.7"/><path d="M12 9v4l2.5 1.5M9 2.5h6M12 2.5v2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/></svg>}</span><span>{mode === "interview" ? (running ? formattedTime : "Start 1 min timer") : running ? formattedTime : seconds === 0 ? `Start again · ${speechMinutes} min` : `Start ${speechMinutes} min timer`}</span></button>
+          <button className={`timer-button${running ? " timer-running" : ""}${!hasSpunInMode[mode] ? " spin-required" : ""}`} onClick={mode === "interview" ? startInterviewTimer : startTimer} disabled={spinning || !hasSpunInMode[mode]} title={!hasSpunInMode[mode] ? "Spin once in this mode to unlock the timer" : undefined}><span className="timer-symbol" aria-hidden="true">{running ? <svg viewBox="0 0 24 24" fill="none"><path d="M8 6v12m8-12v12" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/></svg> : <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8" stroke="currentColor" strokeWidth="1.7"/><path d="M12 9v4l2.5 1.5M9 2.5h6M12 2.5v2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/></svg>}</span><span>{mode === "interview" ? (running ? formattedTime : "Start 1 min timer") : running ? formattedTime : seconds === 0 ? `Start again · ${speechMinutes} min` : `Start ${speechMinutes} min timer`}</span></button>
           ) : (
-            <button className="timer-button" onClick={startResearch} disabled={spinning}><span className="timer-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.2" stroke="currentColor" strokeWidth="1.7"/><path d="m15.1 15.1 4.1 4.1M10.5 7.7v5.6m-2.8-2.8h5.6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/></svg></span><span>Start {researchMinutes} min research</span></button>
+            <button className={`timer-button${!hasSpunInMode.research ? " spin-required" : ""}`} onClick={startResearch} disabled={spinning || !hasSpunInMode.research} title={!hasSpunInMode.research ? "Spin once in this mode to unlock research" : undefined}><span className="timer-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.2" stroke="currentColor" strokeWidth="1.7"/><path d="m15.1 15.1 4.1 4.1M10.5 7.7v5.6m-2.8-2.8h5.6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/></svg></span><span>Start {researchMinutes} min research</span></button>
           )}
           <button className="settings-button" onClick={() => { if (spinning) return; setDraftMinutes(speechMinutes); setDraftResearchMinutes(researchMinutes); setDraftRingtone(ringtoneStyle); setShowSettings(true); }} disabled={spinning} aria-label="Open settings" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 7h15M4.5 17h15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/><circle cx="9" cy="7" r="2.2" fill="var(--bg)" stroke="currentColor" strokeWidth="1.6"/><circle cx="15" cy="17" r="2.2" fill="var(--bg)" stroke="currentColor" strokeWidth="1.6"/></svg></button>
         </div>
@@ -411,6 +421,8 @@ export default function SpeakingPractice() {
         timerProgress={timerProgress}
         word={word}
         isInterview={mode === "interview"}
+        awaitingReadyToSpeak={awaitingReadyToSpeak}
+        onReadyToSpeak={readyToSpeak}
         onClose={closeTimer}
       />
 

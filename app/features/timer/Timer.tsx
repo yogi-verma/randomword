@@ -15,10 +15,12 @@ type TimerProps = {
   timerProgress: number;
   word: string;
   isInterview?: boolean;
+  awaitingReadyToSpeak?: boolean;
+  onReadyToSpeak?: () => void;
   onClose: () => void;
 };
 
-export default function TimerFeature({ open, closing, running, seconds, speechMinutes, formattedTime, activeCue, timerProgress, word, isInterview = false, onClose }: TimerProps) {
+export default function TimerFeature({ open, closing, running, seconds, speechMinutes, formattedTime, activeCue, timerProgress, word, isInterview = false, awaitingReadyToSpeak = false, onReadyToSpeak, onClose }: TimerProps) {
   const [hintOpen, setHintOpen] = useState(false);
   const [celebration, setCelebration] = useState<ReturnType<typeof recordOneMinuteCompletion> | null>(null);
   const hintInteracted = useRef(false);
@@ -95,7 +97,10 @@ export default function TimerFeature({ open, closing, running, seconds, speechMi
               </div>
             </div>
             <p className="cue-hint"><span>{seconds === 0 ? "Beautifully done. You showed up and spoke." : isInterview ? <>Shape your answer with <strong>STAR</strong>: Situation, Task, Action, Result.</> : ["Set the scene. What is it?", "Explore why it matters to you.", "Where could the idea lead?"][activeCue]}</span></p>
-            <div className="timer-screen-actions"><button className="timer-end-button" onClick={closeTimer}>Close</button></div>
+            <div className={`timer-screen-actions${awaitingReadyToSpeak ? " timer-ready-actions" : ""}`}>
+              {awaitingReadyToSpeak && <button className="timer-ready-button" type="button" onClick={onReadyToSpeak}>Ready to Speak <span aria-hidden="true">→</span></button>}
+              <button className="timer-end-button" onClick={closeTimer}>Close</button>
+            </div>
           </div>
         </div>
       </section>

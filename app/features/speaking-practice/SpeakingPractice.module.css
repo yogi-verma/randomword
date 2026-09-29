@@ -2668,6 +2668,15 @@
   }
 }
 
+/* A red-only prohibition cursor for locked actions. */
+:global(.practice) {
+  --spin-blocked-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%23fff' stroke='%23ff1f2f' stroke-width='4'/%3E%3Cpath d='m7.5 24.5 17-17' fill='none' stroke='%23ff1f2f' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") 16 16, not-allowed;
+}
+
+:global(.practice .actions .timer-button.spin-required:disabled) {
+  cursor: var(--spin-blocked-cursor);
+}
+
 /* Quiet letterforms orbit independently behind the practice controls. */
 :global(.word-orbits) {
   position: absolute;
@@ -2893,7 +2902,7 @@
 :global(.practice.spin-lock .controls .mode-switch button:disabled),
 :global(.practice.spin-lock .controls .category-picker button:disabled),
 :global(.practice.spin-lock .actions button:disabled) {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='9' fill='%23f05262' stroke='white' stroke-width='1.5'/%3E%3Cpath d='m7 7 10 10' stroke='white' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") 12 12, not-allowed;
+  cursor: var(--spin-blocked-cursor);
 }
 
 @media (prefers-reduced-motion: reduce) {
